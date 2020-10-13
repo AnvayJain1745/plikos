@@ -14,6 +14,7 @@ var divisions = [];
 var turn = 0;
 var divisionHeight=300;
 var score =0;
+var count =0
 function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
@@ -78,68 +79,74 @@ function draw() {
     
     if(particles.body.position.y>760){
     
-      if(particles.body.position.x<800 && particles.body.position.X>720){
+      if(particles.body.position.x<800 && particles.body.position.x>720){
         score=score+50;
         particles=null;
         if(count>4) gameState=end;
       }
     
-      if(particles.body.position.x<720 && particles.body.position.X>640){
+      else if(particles.body.position.x<720 && particles.body.position.x>640){
         score=score+40;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<640 && particles.body.position.X>560){
+      else if(particles.body.position.x<640 && particles.body.position.x>560){
         score=score+30;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<560 && particles.body.position.X>480){
+      else if(particles.body.position.x<560 && particles.body.position.x>480){
         score=score+20;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<480 && particles.body.position.X>400){
+      else if(particles.body.position.x<480 && particles.body.position.x>400){
         score=score+10;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<400 && particles.body.position.X>320){
+      else if(particles.body.position.x<400 && particles.body.position.x>320){
         score=score+10;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<320 && particles.body.position.X>240){
+      else if(particles.body.position.x<320 && particles.body.position.x>240){
         score=score+20;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<240 && particles.body.position.X>160){
+      else if(particles.body.position.x<240 && particles.body.position.x>160){
         score=score+30;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<160 && particles.body.position.X>80){
+      else if(particles.body.position.x<160 && particles.body.position.x>80){
         score=score+40;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     
-      if(particles.body.position.x<80 && particles.body.position.X>0){
+       else if(particles.body.position.x<80 && particles.body.position.x>0){
         score=score+50;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===4) gameState=end;
       }
     }
      }
       
+     if(count===4){
+       console.log(count);
+       fill("black")
+       textSize(30)
+       text("game over",200,250)
+     }
    
    drawSprites()
 }
