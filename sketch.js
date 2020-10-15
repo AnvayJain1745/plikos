@@ -4,9 +4,9 @@ const Events = Matter.Events;
 const Bodies = Matter.Bodies;
  var yellowLine;
 var play = 1;
-var start = 2;
+
 var end = 0;
-var gameState =2
+var gameState = play;
 
 var particles= null;
 var plinkos = [];
@@ -73,7 +73,7 @@ function draw() {
     divisions[k].display();
   }
 
-  if(particles!==null){
+  if(particles!==null && gameState!==end){
 
     particles.display();
     
@@ -82,70 +82,70 @@ function draw() {
       if(particles.body.position.x<800 && particles.body.position.x>720){
         score=score+50;
         particles=null;
-        if(count>4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<720 && particles.body.position.x>640){
         score=score+40;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<640 && particles.body.position.x>560){
         score=score+30;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<560 && particles.body.position.x>480){
         score=score+20;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<480 && particles.body.position.x>400){
         score=score+10;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<400 && particles.body.position.x>320){
         score=score+10;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<320 && particles.body.position.x>240){
         score=score+20;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<240 && particles.body.position.x>160){
         score=score+30;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
       else if(particles.body.position.x<160 && particles.body.position.x>80){
         score=score+40;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     
        else if(particles.body.position.x<80 && particles.body.position.x>0){
         score=score+50;
         particles=null;
-        if(count===4) gameState=end;
+        if(count===5) gameState=end;
       }
     }
      }
       
-     if(count===4){
+     if(count>4){
        console.log(count);
        fill("black")
        textSize(30)
-       text("game over",200,250)
+       text("game over , your score = "+score,200,250)
      }
    
    drawSprites()
@@ -154,9 +154,9 @@ function draw() {
 function mouseClicked(){
 
   
-    if(gameState!==end){
+    if(gameState!==end && count <6){
       particles=new Particle(mouseX,10,10)
   console.log(particles)
-    
+    count++
   }
 }
